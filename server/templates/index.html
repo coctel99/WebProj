@@ -2,9 +2,8 @@
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Vue Crypto Price Wall</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-
+    <title>Crypto Web Project</title>
+    <link rel="stylesheet" href="%% url_for('static', filename='css/index.css') %%">
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -14,14 +13,17 @@
     <!-- fixed header -->
     <header class="header-wrap">
         <div class="header-row flex-row flex-middle flex-space">
-            <div class="if-small">
+            <div class="if-small flex-row">
+                <div class="form-input text-nowrap shadow-box">
+                    <a href="/login" class="text-nodecor"><span class="text-primary">Login</span></a>
+                </div>
                 <div class="form-input dark">
                     <div class="push-right">🔎</div>
                     <input type="text" v-model="search" placeholder="Search token..." />
                 </div>
             </div>
             <div class="text-primary if-medium">
-                <h1 class="text-nowrap text-condense shadow-text">Crypto 24h Change</h1>
+                <h1 class="text-nowrap text-condense shadow-text">Cryptocurrency rates</h1>
             </div>
             <div class="flex-row flex-middle">
                 <div class="dropdown">
@@ -99,7 +101,8 @@
 
 </div>
 <!-- partial -->
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js'></script><script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js'></script>
+<script type="text/javascript" src="%% url_for('static', filename='js/index2.js') %%"></script>
 
 </body>
 </html>
