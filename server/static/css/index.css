@@ -17,8 +17,6 @@
   -webkit-transform-style: flat;
   transform-style: flat;
   -webkit-transition: border-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: border-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: border-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1), transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: border-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1), transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
@@ -299,6 +297,11 @@ input, button, select, option, textarea {
   text-decoration: line-through;
 }
 
+.text-nodecor {
+  text-decoration: none;
+}
+
+
 .text-italic {
   font-style: italic;
 }
@@ -318,7 +321,7 @@ input, button, select, option, textarea {
 }
 
 .text-primary {
-  color: orange;
+  color: #ede8e8;
 }
 
 .text-secondary {
