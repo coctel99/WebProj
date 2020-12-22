@@ -15,7 +15,11 @@
         <div class="header-row flex-row flex-middle flex-space">
             <div class="if-small flex-row">
                 <div class="form-input text-nowrap shadow-box">
-                    <a href="/login" class="text-nodecor"><span class="text-primary">Login</span></a>
+                    {% if auth %}
+                        <a href="/login" class="text-nodecor"><span class="text-primary">Profile</span></a>
+                    {% else %}
+                        <a href="/login" class="text-nodecor"><span class="text-primary">Login</span></a>
+                    {% endif %}
                 </div>
                 <div class="form-input dark">
                     <div class="push-right">🔎</div>
