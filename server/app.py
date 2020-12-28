@@ -111,15 +111,15 @@ def logout():
 @app.route('/profile',  methods=['GET'])
 @login_required
 def profile_page():
-    # TODO: profilization, add html
+    # TODO: add html and css
     return render_template('profile.html', username=current_user.username)
 
 
 @app.route('/portfolio', methods=['GET'])
 @login_required
 def portfolio_page():
-    # TODO: add html
-    return 'Portfolio Page'
+    # TODO: add html and css, show user's cryptocurrancy
+    return render_template('portfolio.html', username=current_user.username)
 
 
 def db_add_user(username, password):
