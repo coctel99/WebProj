@@ -132,6 +132,10 @@ input, button, select, option, textarea {
   margin-top: 1em;
 }
 
+.push-top-small {
+  margin-top: 0.7em;
+}
+
 .push-right {
   margin-right: 1em;
 }
@@ -563,4 +567,42 @@ input, button, select, option, textarea {
   font-style: normal;
   font-size: 600%;
   line-height: normal;
+}
+.width-full{
+  width: 100%;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.cursor-initial {
+  cursor: initial;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.9);
+  z-index: 1000;
+  align-items: center;
+}
+
+.overlay_menu_box {
+  position: relative;
+  width: fit-content;
+  margin: auto;
+  background: #1e2126;
+  padding: 10px;
+  z-index: 1000;
 }

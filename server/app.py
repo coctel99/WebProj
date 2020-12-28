@@ -29,10 +29,12 @@ class User(UserMixin, db.Model):
     id = Column(Integer, primary_key=True)
     username = Column(String(80), unique=True)
     password = Column(String(24))
+    cryptolist = Column(String(2048))
 
     def __init__(self, username, password):
         self.username = username
         self.password = password
+        self.cryptolist = ""
 
     def __repr__(self):
         return "{}".format(self.username)
@@ -111,6 +113,7 @@ def logout():
 @app.route('/profile',  methods=['GET'])
 @login_required
 def profile_page():
+    cur_usr = current_user
     # TODO: add html and css
     return render_template('profile.html', username=current_user.username)
 
@@ -118,8 +121,9 @@ def profile_page():
 @app.route('/portfolio', methods=['GET'])
 @login_required
 def portfolio_page():
+    cur_usr = current_user
     # TODO: add html and css, show user's cryptocurrancy
-    return render_template('portfolio.html', username=current_user.username)
+    return render_template('portfolio.html', username=current_user.username, cryptolist=current_user.cryptolist)
 
 
 def db_add_user(username, password):

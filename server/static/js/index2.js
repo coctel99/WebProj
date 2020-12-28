@@ -130,6 +130,16 @@ new Vue({
   // custom methods
   methods: {
 
+    // overlay functions
+    overlay_on(elem) {
+      document.getElementById("overlay").style.display = "flex";
+      console.log("OVERLAY CONVERT " + elem.target.parentNode.parentNode.id);
+    },
+
+    overlay_off() {
+      document.getElementById("overlay").style.display = "none";
+    },
+
     // apply sorting and toggle order
     sortBy( key, order ) {
       if ( this.sort !== key ) { this.order = order || 'asc'; }

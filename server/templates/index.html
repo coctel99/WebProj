@@ -64,13 +64,36 @@
         </div>
     </header>
 
+    <!-- overlay menu -->
+    <div class="overlay cursor-initial" id="overlay">
+        <div class="overlay_menu_box cursor-initial" id="menu">
+            <p class="text-big">Your current finances: %% finances %%</p>
+            <p class="text-big push-top">Convert</p>
+            <div class="flex-row">
+                <div class="form-input"><label><input></label></div>
+                <p class="push-top-small push-left push-right">of</p>
+                <div class="form-input">cripto1</div>
+            </div>
+            <p class="text-big push-top">You will get</p>
+            <div class="flex-row">
+                <div class="form-input width-full">Amount</div>
+                <p class="push-top-small push-left push-right">of</p>
+                <div class="form-input">cripto2</div>
+            </div>
+            <div class="flex-row push-top flex-center flex-space">
+                <div  @click="overlay_off" class="form-input push-left cursor-pointer">Exit</div>
+                <div class="form-input push-right cursor-pointer">Convert</div>
+            </div>
+        </div>
+    </div>
+
     <!-- price list grid -->
     <main class="main-wrap">
         <div class="main-grid-list">
-            <div class="main-grid-item" v-for="c in coinsList" :key="c.symbol" :class="c.style">
+            <div class="main-grid-item dropdown" v-for="c in coinsList" :key="c.symbol" :class="c.style" :id="c.pair">
                 <div class="main-grid-info flex-row flex-top flex-stretch">
                     <div class="push-right">
-                        <img :src="c.icon" :alt="c.pair" />
+                        <img :src="c.icon" :alt="c.pair"/>
                     </div>
                     <div class="flex-1 shadow-text">
                         <div class="flex-row flex-top flex-space">
@@ -89,6 +112,11 @@
                 <div class="main-grid-chart">
                     <linechart :width="600" :height="40" :values="c.history"></linechart>
                 </div>
+                {% if auth %}
+                    <ul>
+                        <li @click="overlay_on">Convert</li>
+                    </ul>
+                {% endif %}
             </div>
         </div>
     </main>

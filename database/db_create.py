@@ -12,10 +12,12 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(80), unique=True)
     password = Column(String(24))
+    cryptolist = Column(String(2048))  # format: "token:value;..."
 
     def __init__(self, username, password):
         self.username = username
         self.password = password
+        self.cryptolist = ""
 
     def __repr__(self):
         return "{}".format(self.username)

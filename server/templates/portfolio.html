@@ -11,5 +11,10 @@
     <a href="/logout">Logout</a>
 </div>
 <p>Here will be your cryptoportfolio</p>
+{% if cryptolist %}
+    <p>%% cryptolist %%</p>
+{% else %}
+    <p>Your criptoportfolio is empty</p>
+{% endif %}
 </body>
 </html>
