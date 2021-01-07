@@ -10,11 +10,12 @@
     <a href="/profile">Profile</a>
     <a href="/logout">Logout</a>
 </div>
-<p>Here will be your cryptoportfolio</p>
-{% if cryptolist %}
-    <p>%% cryptolist %%</p>
+<p>Here is your cryptoportfolio:</p>
+{% if curr %}
+    <div id="curr">%% curr %%</div>
+    <div id="val">%% val %%</div>
 {% else %}
-    <p>Your criptoportfolio is empty</p>
+    <div>Your cryptoportfolio is empty</div>
 {% endif %}
 </body>
 </html>

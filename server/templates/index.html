@@ -68,21 +68,23 @@
     <div class="overlay cursor-initial" id="overlay">
         <div class="overlay_menu_box cursor-initial" id="menu">
             <p class="text-big">Your current finances: %% finances %%</p>
+            <p class="text-big">Current value is: </p>
+            <div class="text-big" id="value">value</div>
             <p class="text-big push-top">Convert</p>
             <div class="flex-row">
-                <div class="form-input"><label><input></label></div>
+                <div class="form-input"><label><input onkeyup="updateAmount()" id="input"></label></div>
                 <p class="push-top-small push-left push-right">of</p>
-                <div class="form-input">cripto1</div>
+                <div class="form-input" id="crypto1">crypto1</div>
             </div>
-            <p class="text-big push-top">You will get</p>
+            <p class="text-big push-top">to</p>
             <div class="flex-row">
-                <div class="form-input width-full">Amount</div>
+                <div class="form-input width-full" id="amount">Enter a number or a float</div>
                 <p class="push-top-small push-left push-right">of</p>
-                <div class="form-input">cripto2</div>
+                <div class="form-input" id="crypto2">crypto2</div>
             </div>
             <div class="flex-row push-top flex-center flex-space">
-                <div  @click="overlay_off" class="form-input push-left cursor-pointer">Exit</div>
-                <div class="form-input push-right cursor-pointer">Convert</div>
+                <div @click="overlay_off" class="form-input push-left cursor-pointer">Exit</div>
+                <div class="form-input push-right cursor-pointer" @click="convert">Convert</div>
             </div>
         </div>
     </div>
@@ -90,7 +92,7 @@
     <!-- price list grid -->
     <main class="main-wrap">
         <div class="main-grid-list">
-            <div class="main-grid-item dropdown" v-for="c in coinsList" :key="c.symbol" :class="c.style" :id="c.pair">
+            <div class="main-grid-item dropdown" v-for="c in coinsList" :key="c.symbol" :class="c.style" :name="c.name" :asset="c.asset" :value="c.close">
                 <div class="main-grid-info flex-row flex-top flex-stretch">
                     <div class="push-right">
                         <img :src="c.icon" :alt="c.pair"/>

@@ -1,3 +1,11 @@
+function updateAmount(){
+  if (document.getElementById("input").value && !isNaN(document.getElementById("input").value)) {
+    document.getElementById("amount").innerHTML = (parseFloat(document.getElementById("input").value) * parseFloat(document.getElementById("value").textContent)).toString();
+  } else {
+    document.getElementById("amount").innerHTML = "Enter a number or a float";
+  }
+}
+
 // common number filters
 Vue.filter( 'toFixed', ( num, asset ) => {
   if ( typeof asset === 'number' ) return Number( num ).toFixed( asset );
@@ -126,18 +134,29 @@ new Vue({
       }
     },
   },
-
   // custom methods
   methods: {
 
     // overlay functions
     overlay_on(elem) {
       document.getElementById("overlay").style.display = "flex";
-      console.log("OVERLAY CONVERT " + elem.target.parentNode.parentNode.id);
+      // console.log("crypto1 " + elem.target.parentNode.parentElement.getAttribute("name"));
+      // console.log("crypto2 " + elem.target.parentNode.parentElement.getAttribute("asset"));
+      // console.log("value " + elem.target.parentNode.parentElement.getAttribute("value"));
+      document.getElementById("crypto1").innerHTML = elem.target.parentNode.parentElement.getAttribute("name");
+      document.getElementById("crypto2").innerHTML = elem.target.parentNode.parentElement.getAttribute("asset");
+      document.getElementById("value").innerHTML = elem.target.parentNode.parentElement.getAttribute("value");
     },
 
     overlay_off() {
       document.getElementById("overlay").style.display = "none";
+    },
+
+    convert(){
+      console.log("CONVERT CLICKED amount: " + document.getElementById("amount").innerHTML);
+      if (document.getElementById("amount").innerHTML && !isNaN(parseFloat(document.getElementById("amount").innerHTML))) {
+        document.getElementById("input").value = "";
+      }
     },
 
     // apply sorting and toggle order

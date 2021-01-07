@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, current_user, login_user, login_required, LoginManager, logout_user
-from sqlalchemy import Column, String, Integer
+from sqlalchemy import Column, String, Integer, update
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
@@ -122,13 +122,30 @@ def profile_page():
 @login_required
 def portfolio_page():
     cur_usr = current_user
+    curr, val = parse_list(current_user.cryptolist)
     # TODO: add html and css, show user's cryptocurrancy
-    return render_template('portfolio.html', username=current_user.username, cryptolist=current_user.cryptolist)
+    return render_template('portfolio.html', username=current_user.username, curr=curr, val=val)
 
 
 def db_add_user(username, password):
     db.session.add(User(username, password))
     db.session.commit()
+
+
+def parse_list(cryptolist):
+    curr = []
+    val = []
+    cryptolist = cryptolist[:-1]
+    list = cryptolist.split(';')
+    for i in range(len(list)):
+        currval = list[i]
+        currval = list[i].split(':')
+        curr.append(currval[0])
+        val.append(currval[1])
+
+    curr = '\n'.join(curr)
+    val = '\n'.join(val)
+    return curr, val
 
 
 if __name__ == '__main__':
