@@ -8,14 +8,13 @@ function updateAmount(){
 }
 
 function roll(){
+  new Audio("https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptitle=Do+A+Barrel+Roll&filename=23/238414-6293eb5d-6085-4993-94e0-c878ef7862c8.mp3").play();
   document.getElementById('body').className = "do_a_barrel_roll";
-  console.log('Do a roll');
   setTimeout(stop_roll, 4000);
 }
 
 function stop_roll(){
   document.getElementById('body').className = "";
-  console.log('Stopped rolling');
 }
 
 // common number filters

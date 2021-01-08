@@ -7,25 +7,7 @@
 </head>
 <body>
 	
-	<!-- partial:index.partial.html -->
-<div class="animateme">
-  <ul class="bg-bubbles">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-</div>
-<!-- partial -->
+
 
 
    <center>
@@ -38,13 +20,14 @@
       <p>Here is your cryptoportfolio:</p>
       {% if curr %}
           <div class="currancy_table">
-              <div id="curr" style="white-space: pre-line">%% curr %%</div>
+              <div class="text-big push-right" id="curr" style="white-space: pre-line">%% curr %%</div>
               <div class="currancy_table_space"></div>
-              <div id="val" style="white-space: pre-line">%% val %%</div>
+              <div class="text-big push-left" id="val" style="white-space: pre-line">%% val %%</div>
           </div>
       {% else %}
           <div>Your cryptoportfolio is empty</div>
       {% endif %}
   </center>
+
 </body>
 </html>
