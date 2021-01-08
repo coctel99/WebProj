@@ -1,6 +1,7 @@
 function updateAmount(){
   if (document.getElementById("input").value && !isNaN(document.getElementById("input").value)) {
-    document.getElementById("amount").innerHTML = (parseFloat(document.getElementById("input").value) * parseFloat(document.getElementById("value").textContent)).toString();
+    console.log("<input id=\"value\" name=\"value\" size=\"32\" type=\"text\" value=\"" + (parseFloat(document.getElementById("input").value) * parseFloat(document.getElementById("value").textContent)).toString() + "\">");
+    document.getElementById("amount").innerHTML = "<input id=\"value\" name=\"value\" size=\"32\" type=\"text\" value=\"" + (parseFloat(document.getElementById("input").value) * parseFloat(document.getElementById("value").textContent)).toString() + "\">";
   } else {
     document.getElementById("amount").innerHTML = "Enter a number or a float";
   }
@@ -139,6 +140,8 @@ new Vue({
 
     // overlay functions
     overlay_on(elem) {
+      document.getElementById("input").value = "";
+      document.getElementById("amount").innerHTML = "Enter a number or a float";
       document.getElementById("overlay").style.display = "flex";
       // console.log("crypto1 " + elem.target.parentNode.parentElement.getAttribute("name"));
       // console.log("crypto2 " + elem.target.parentNode.parentElement.getAttribute("asset"));
@@ -154,9 +157,6 @@ new Vue({
 
     convert(){
       console.log("CONVERT CLICKED amount: " + document.getElementById("amount").innerHTML);
-      if (document.getElementById("amount").innerHTML && !isNaN(parseFloat(document.getElementById("amount").innerHTML))) {
-        document.getElementById("input").value = "";
-      }
     },
 
     // apply sorting and toggle order

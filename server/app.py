@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, url_for
+from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, current_user, login_user, login_required, LoginManager, logout_user
 from sqlalchemy import Column, String, Integer, update
@@ -47,13 +47,30 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Submit Form')
 
 
-@app.route('/')
+class OverlayForm(FlaskForm):
+    input = StringField('Input', validators=[DataRequired()])
+    value = StringField('Value')
+    submit = SubmitField('Submit Form')
+
+
+@app.route('/', methods=['GET', 'POST'])
 def index_page():
     if current_user.is_authenticated:
         auth = True
     else:
         auth = False
-    return render_template('index.html', auth=auth)
+
+    form = OverlayForm()
+    if form.validate_on_submit():
+        input = form.input.data
+        value = form.value.data
+        curr, val = unpack(current_user.cryptolist)
+        index1 = curr.index('ETH')
+        index2 = curr.index('BTC')
+        val1 = val[index1]
+        val2 = val[index2]
+
+    return render_template('index.html', auth=auth, form=form)
 
 
 @app.route('/registration', methods=['GET', 'POST'])
@@ -107,7 +124,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index_page'))
+    return redirect(url_for('login'))
 
 
 @app.route('/profile',  methods=['GET'])
@@ -147,6 +164,29 @@ def parse_list(cryptolist):
     val = '\n'.join(val)
     return curr, val
 
+
+def unpack(cryptolist):
+    curr = []
+    val = []
+    cryptolist = cryptolist[:-1]
+    list = cryptolist.split(';')
+    for i in range(len(list)):
+        currval = list[i]
+        currval = list[i].split(':')
+        curr.append(currval[0])
+        val.append(currval[1])
+
+    return curr, val
+
+
+def pack(curr, val):
+    list = []
+    for i in range(len(curr)):
+        currval = curr[i] + ':' + val[i]
+        list.append(currval)
+
+    cryptolist = ';'.join(list)
+    return cryptolist
 
 if __name__ == '__main__':
     # db.create_all()
