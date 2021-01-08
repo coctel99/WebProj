@@ -606,3 +606,31 @@ input, button, select, option, textarea {
   padding: 10px;
   z-index: 1000;
 }
+
+
+.do_a_barrel_roll{
+  -moz-animation-name: roll;
+  -moz-animation-duration: 4s;
+  -moz-animation-iteration-count: 1;
+  -o-animation-name: roll;
+  -o-animation-duration: 4s;
+  -o-animation-iteration-count: 1;
+  -webkit-animation-name: roll;
+  -webkit-animation-duration: 4s;
+  -webkit-animation-iteration-count: 1;
+}
+
+@-webkit-keyframes roll {
+  from { -webkit-transform: rotate(0deg) }
+  to   { -webkit-transform: rotate(360deg) }
+}
+
+@-moz-keyframes roll {
+  from { -moz-transform: rotate(0deg) }
+  to   { -moz-transform: rotate(360deg) }
+}
+
+@keyframes roll {
+  from { transform: rotate(0deg) }
+  to   { transform: rotate(360deg) }
+}

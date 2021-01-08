@@ -7,6 +7,17 @@ function updateAmount(){
   }
 }
 
+function roll(){
+  document.getElementById('body').className = "do_a_barrel_roll";
+  console.log('Do a roll');
+  setTimeout(stop_roll, 4000);
+}
+
+function stop_roll(){
+  document.getElementById('body').className = "";
+  console.log('Stopped rolling');
+}
+
 // common number filters
 Vue.filter( 'toFixed', ( num, asset ) => {
   if ( typeof asset === 'number' ) return Number( num ).toFixed( asset );

@@ -1,18 +1,51 @@
 <html>
 <head>
+	 <meta charset="UTF-8">
     {% if title %}
         <title>%% title %% </title>
     {% else %}
         <title>Crypto Web Project </title>
     {% endif %}
+    
+    <link rel="stylesheet" href="%% url_for('static', filename='css/formbase.css') %%">
+
 </head>
+
 <body>
-<div> Simple Taskbar:
-    <a href="/">Home</a>
-    <a href="/login">Login</a>
-    <a href="/registration">Registration</a>
+
+<!-- partial:index.partial.html -->
+<div class="animateme">
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 </div>
-<hr>
+<!-- partial -->
+
+
+
+
+<br>
+
+ <center>
+       <button class = "bstyle"> <a href="/">Home</a> </button>
+    <button class = "bstyle"> <a href="/login">Login</a> </button>
+    <button class = "bstyle"> <a href="/registration">Registration</a> </button>
+</center>
+<br>
+
+
 {% block content %}{% endblock %}
 </body>
 </html>

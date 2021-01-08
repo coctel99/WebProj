@@ -3,24 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title> %% username %%'s portfolio page</title>
-    <link rel="stylesheet" href="%% url_for('static', filename='css/index.css') %%">
+    <link rel="stylesheet" href="%% url_for('static', filename='css/portfolio.css') %%">
 </head>
 <body>
-<div> Simple Taskbar:
-    <a href="/">Home</a>
-    <a href="/profile">Profile</a>
-    <a href="/logout">Logout</a>
+	
+	<!-- partial:index.partial.html -->
+<div class="animateme">
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 </div>
-<p>Here is your cryptoportfolio:</p>
-{% if curr %}
-    <div class="overlay_menu_box">
-        <div class="flex-row flex-space">
-            <div class="text-big push-right" id="curr" style="white-space: pre-line">%% curr %%</div>
-            <div class="text-big push-left" id="val" style="white-space: pre-line">%% val %%</div>
-        </div>
-    </div>
-{% else %}
-    <div>Your cryptoportfolio is empty</div>
-{% endif %}
+<!-- partial -->
+
+
+   <center>
+       <button class = "bstyle"> <a href="/">Home</a> </button>
+    <button class = "bstyle"> <a href="/profile">Profile</a> </button>
+    <button class = "bstyle"> <a href="/logout">Logout</a> </button>
+</center>
+<br>
+  <center>
+      <p>Here is your cryptoportfolio:</p>
+      {% if curr %}
+          <div class="currancy_table">
+              <div id="curr" style="white-space: pre-line">%% curr %%</div>
+              <div class="currancy_table_space"></div>
+              <div id="val" style="white-space: pre-line">%% val %%</div>
+          </div>
+      {% else %}
+          <div>Your cryptoportfolio is empty</div>
+      {% endif %}
+  </center>
 </body>
 </html>

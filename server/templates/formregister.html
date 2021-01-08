@@ -1,14 +1,23 @@
 {% extends "Formbase.html" %}
 {% block content %}
-    <h1>Registration</h1>
-    <form action="" method="post" novalidate>
+      <br>
+<center>
+        <h1>Registration</h1>
+<br>
+<br>
+  <form action="registration" method="post" novalidate>
         %% form.hidden_tag() %%
+       <div class="username">
         <p>
-            %% form.username.label %%<br>
+            %% form.username.label  %%<br><br>
             %% form.username(size=32) %%
         </p>
+       </div>
+    <br>
+  <br>
+<br>
         <p>
-            %% form.password.label %%<br>
+            %% form.password.label %%<br><br>
             %% form.password(size=32) %%
         </p>
         {% with messages = get_flashed_messages() %}
@@ -20,6 +29,11 @@
                 </ul>
             {% endif %}
         {% endwith %}
+   <br>
+  <br>
+<br>
         <p>%% form.submit() %%</p>
     </form>
+
+</center>
 {% endblock %}

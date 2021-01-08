@@ -3,13 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title> %% username %%'s profile page</title>
+    <link rel="stylesheet" href="%% url_for('static', filename='css/profile.css') %%">
 </head>
 <body>
-<div> Simple Taskbar:
-    <a href="/">Home</a>
-    <a href="/portfolio">Portfolio</a>
-    <a href="/logout">Logout</a>
+
+	<!-- partial:index.partial.html -->
+<div class="animateme">
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 </div>
-<h1>Welcome, %% username %%!</h1>
+<!-- partial -->
+
+
+<br>
+   <center>
+       <button class = "bstyle"> <a href="/">Home</a> </button>
+    <button class = "bstyle"> <a href="/portfolio">Portfolio</a> </button>
+    <button class = "bstyle"> <a href="/logout">Logout</a> </button>
+</center>
+<br>
+
+
+
+
+<center>
+
+
+
+
+<link rel="stylesheet" href="https://upload.wikimedia.org/wikipedia/ru/d/db/%D0%90%D1%80%D1%82%D0%B0%D1%81.jpg">
+
+<div class="card">
+  <img src="https://upload.wikimedia.org/wikipedia/ru/d/db/%D0%90%D1%80%D1%82%D0%B0%D1%81.jpg"  style="width:80%">
+  <h1>%% username %%</h1> <br>
+  <p class="title">Customer</p>
+  <p>ITMO University</p>
+  <p><button class = "card">Change photo</button></p>
+</div>
+
+
+</center>
+
+
 </body>
 </html>

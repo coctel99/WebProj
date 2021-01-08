@@ -5,7 +5,7 @@
     <title>Crypto Web Project</title>
     <link rel="stylesheet" href="%% url_for('static', filename='css/index.css') %%">
 </head>
-<body>
+<body id="body">
 <!-- partial:index.partial.html -->
 <!-- vue root -->
 <div id="app" v-cloak>
@@ -26,8 +26,9 @@
                     <input type="text" v-model="search" placeholder="Search token..." />
                 </div>
             </div>
-            <div class="text-primary if-medium">
+            <div class="text-primary if-medium flex-row">
                 <h1 class="text-nowrap text-condense shadow-text">Cryptocurrency rates</h1>
+                <img src="https://www.iconninja.com/files/954/671/649/bitcoin-icon.png" width="30" height="30" alt="btc_icon" onclick="roll()">
             </div>
             <div class="flex-row flex-middle">
                 <div class="dropdown">
@@ -74,16 +75,16 @@
                 <p class="text-big push-top">Buy</p>
                 <div class="flex-row">
                     <!-- <div class="form-input"><label><input onkeyup="updateAmount()" id="input"></label></div> -->
-                    <div class="form-input" onkeyup="updateAmount()">%% form.input(size=32) %%</div>
+                    <div class="form-input" onkeyup="updateAmount()">%% form.input(size=32, autocomplete="off") %%</div>
                     <p class="push-top-small push-left push-right">of</p>
-                    <div class="form-input" id="crypto1">%% form.crypto1(size=4) %%</div>
+                    <div class="form-input" id="crypto1">%% form.crypto1(size=4, autocomplete="off", disabled=True) %%</div>
                 </div>
                 <p class="text-big push-top">for</p>
                 <div class="flex-row">
                     <!-- <div class="form-input width-full" id="amount">Enter a number or a float</div> -->
-                    <div class="form-input width-full" id="amount">%% form.value(size=32) %%</div>
+                    <div class="form-input width-full" id="amount">%% form.value(size=32, autocomplete="off") %%</div>
                     <p class="push-top-small push-left push-right">of</p>
-                    <div class="form-input" id="crypto2">%% form.crypto2(size=4) %%</div>
+                    <div class="form-input" id="crypto2">%% form.crypto2(size=4, autocomplete="off") %%</div>
                 </div>
                 <div class="push-left">
                     {% with messages = get_flashed_messages() %}

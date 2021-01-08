@@ -57,6 +57,7 @@ class OverlayForm(FlaskForm):
 
 @app.route('/', methods=['GET', 'POST'])
 def index_page():
+    cont = False
     if current_user.is_authenticated:
         auth = True
     else:
@@ -87,8 +88,9 @@ def index_page():
                 user = User.query.filter_by(username=current_user.username).first()
                 user.cryptolist = cryptolist
                 db.session.commit()
+            cont = True
 
-    return render_template('index.html', auth=auth, form=form)
+    return render_template('index.html', auth=auth, form=form, cont=cont)
 
 
 @app.route('/registration', methods=['GET', 'POST'])
@@ -168,6 +170,8 @@ def db_add_user(username, password):
 
 
 def parse_list(cryptolist):
+    if not cryptolist:
+        return None, None
     curr = []
     val = []
     list = cryptolist.split(';')
@@ -183,6 +187,8 @@ def parse_list(cryptolist):
 
 
 def unpack(cryptolist):
+    if not cryptolist:
+        return None, None
     curr = []
     val = []
     list = cryptolist.split(';')
@@ -196,10 +202,13 @@ def unpack(cryptolist):
 
 
 def pack(curr, val):
+    if not curr and not val:
+        return None, None
     list = []
     for i in range(len(curr)):
-        currval = curr[i] + ':' + val[i]
-        list.append(currval)
+        if val[i] != '0' and val[i] != '0.0':
+            currval = curr[i] + ':' + val[i]
+            list.append(currval)
 
     cryptolist = ';'.join(list)
     return cryptolist
