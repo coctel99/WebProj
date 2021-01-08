@@ -50,6 +50,8 @@ class LoginForm(FlaskForm):
 class OverlayForm(FlaskForm):
     input = StringField('Input', validators=[DataRequired()])
     value = StringField('Value')
+    crypto1 = StringField('Crypto1')
+    crypto2 = StringField('Crypto2')
     submit = SubmitField('Submit Form')
 
 
@@ -61,14 +63,30 @@ def index_page():
         auth = False
 
     form = OverlayForm()
-    if form.validate_on_submit():
-        input = form.input.data
-        value = form.value.data
-        curr, val = unpack(current_user.cryptolist)
-        index1 = curr.index('ETH')
-        index2 = curr.index('BTC')
-        val1 = val[index1]
-        val2 = val[index2]
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            input = form.input.data
+            value = form.value.data
+            crypto1 = form.crypto1.data
+            crypto2 = form.crypto2.data
+            curr, val = unpack(current_user.cryptolist)
+            if crypto1 not in curr:
+                curr.append(crypto1)
+                val.append("0")
+            if crypto2 not in curr:
+                return render_template('index.html', auth=auth, form=form)
+            index1 = curr.index(crypto1)
+            index2 = curr.index(crypto2)
+            val1 = val[index1]
+            val2 = val[index2]
+            if float(val[index2]) - float(value) >= 0:
+                val[index1] = str(float(val[index1]) + float(input))
+                val[index2] = str(float(val[index2]) - float(value))
+                cryptolist = pack(curr, val)
+                user = User.query.filter_by(username=current_user.username).first()
+                user.cryptolist = cryptolist
+                db.session.commit()
 
     return render_template('index.html', auth=auth, form=form)
 
@@ -152,7 +170,6 @@ def db_add_user(username, password):
 def parse_list(cryptolist):
     curr = []
     val = []
-    cryptolist = cryptolist[:-1]
     list = cryptolist.split(';')
     for i in range(len(list)):
         currval = list[i]
@@ -168,7 +185,6 @@ def parse_list(cryptolist):
 def unpack(cryptolist):
     curr = []
     val = []
-    cryptolist = cryptolist[:-1]
     list = cryptolist.split(';')
     for i in range(len(list)):
         currval = list[i]
@@ -187,6 +203,7 @@ def pack(curr, val):
 
     cryptolist = ';'.join(list)
     return cryptolist
+
 
 if __name__ == '__main__':
     # db.create_all()

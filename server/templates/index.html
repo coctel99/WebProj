@@ -71,37 +71,41 @@
                 %% form.hidden_tag() %%
                 <p class="text-big">Current value is: </p>
                 <div class="text-big" id="value">value</div>
-                <p class="text-big push-top">Convert</p>
+                <p class="text-big push-top">Buy</p>
                 <div class="flex-row">
                     <!-- <div class="form-input"><label><input onkeyup="updateAmount()" id="input"></label></div> -->
                     <div class="form-input" onkeyup="updateAmount()">%% form.input(size=32) %%</div>
                     <p class="push-top-small push-left push-right">of</p>
-                    <div class="form-input" id="crypto1">crypto1</div>
+                    <div class="form-input" id="crypto1">%% form.crypto1(size=4) %%</div>
                 </div>
-                <p class="text-big push-top">to</p>
+                <p class="text-big push-top">for</p>
                 <div class="flex-row">
                     <!-- <div class="form-input width-full" id="amount">Enter a number or a float</div> -->
                     <div class="form-input width-full" id="amount">%% form.value(size=32) %%</div>
                     <p class="push-top-small push-left push-right">of</p>
-                    <div class="form-input" id="crypto2">crypto2</div>
+                    <div class="form-input" id="crypto2">%% form.crypto2(size=4) %%</div>
                 </div>
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <ul class=flashes>
-                            {% for message in messages %}
-                                <li>%% message %%</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endwith %}
+                <div class="push-left">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class=flashes>
+                                {% for message in messages %}
+                                 <li>%% message %%</li>
+                             {% endfor %}
+                         </ul>
+                        {% endif %}
+                 {% endwith %}
+                </div>
                 <div class="flex-row push-top flex-center flex-space">
                     <div @click="overlay_off" class="form-input push-left cursor-pointer">Exit</div>
                     <!-- <div class="form-input push-right cursor-pointer" @click="convert">Convert</div> -->
-                    <div class="form-input push-right cursor-pointer" @click="convert">%% form.submit() %%</div>
+                    <div class="form-input push-right cursor-pointer" @click="convert">%% form.submit(class='cursor-pointer') %%</div>
                 </div>
             </form>
         </div>
     </div>
+
+    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
 
     <!-- price list grid -->
     <main class="main-wrap">

@@ -146,8 +146,8 @@ new Vue({
       // console.log("crypto1 " + elem.target.parentNode.parentElement.getAttribute("name"));
       // console.log("crypto2 " + elem.target.parentNode.parentElement.getAttribute("asset"));
       // console.log("value " + elem.target.parentNode.parentElement.getAttribute("value"));
-      document.getElementById("crypto1").innerHTML = elem.target.parentNode.parentElement.getAttribute("name");
-      document.getElementById("crypto2").innerHTML = elem.target.parentNode.parentElement.getAttribute("asset");
+      document.getElementById("crypto1").innerHTML = "<input id=\"crypto1\" name=\"crypto1\" size=\"4\" type=\"text\" value=\"" + elem.target.parentNode.parentElement.getAttribute("name") + "\">";
+      document.getElementById("crypto2").innerHTML = "<input id=\"crypto2\" name=\"crypto2\" size=\"4\" type=\"text\" value=\"" + elem.target.parentNode.parentElement.getAttribute("asset") + "\">";
       document.getElementById("value").innerHTML = elem.target.parentNode.parentElement.getAttribute("value");
     },
 
