@@ -1,0 +1,20 @@
+body{
+  background: #66a5ff;
+  font-family:sans-serif;
+  font-weight: bold;
+    text-decoration: none;
+}
+
+
+
+.info
+{  position: fixed;
+  /* or absolute */
+   top: 50%;
+   left: 50%;
+   width: 200px;
+   height:100px;
+   background: #f0f0f0;
+}
+
+
